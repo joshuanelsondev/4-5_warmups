@@ -1,7 +1,8 @@
 //Write a function that takes a string as input and returns the string reversed.
 
 function reverseString(str) {
-
+    const reversedString = str.split(' ').reverse().join(' ');
+    return reversedString
 }
 
 // Test cases
