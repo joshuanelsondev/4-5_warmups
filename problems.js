@@ -1,7 +1,11 @@
 //Write a function that takes a string as input and returns the string reversed.
 
 function reverseString(str) {
-
+    let reverseStr = "";
+    for (let i = str.length - 1; i >=0; i--) {
+        reverseStr += str[i];
+    }
+    return reverseStr;
 }
 
 // Test cases
@@ -14,7 +18,13 @@ console.log(reverseString("12345")); // Output: "54321"
 //Write a function that takes an array of numbers and returns the maximum number in the array.
 
 function findMax(arr) {
-
+    let max =  arr[0];
+    for (let i = 1; i < arr.length; i++) {
+        if (arr[i] > max) {
+            max = arr[i];
+        }
+    }   
+    return max;
 }
 
 // Test cases
@@ -25,7 +35,14 @@ console.log(findMax([100, 200, 150])); // Output: 200
 //Write a function that takes a string as input and returns the number of vowels in the string (a, e, i, o, u).
 
 function countVowels(str) {
-
+    const vowels = ['a', 'e', 'i', 'o', 'u'];
+    let count = 0;
+    for (let char of str.toLowerCase()) {
+        if (vowels.includes(char)) {
+            count++;
+        }
+    }
+    return count;
 }
 
 // Test cases
@@ -36,7 +53,7 @@ console.log(countVowels("JavaScript")); // Output: 3
 //Write a function that takes a string as input and returns true if it's a palindrome, false otherwise.
 
 function isPalindrome(str) {
-
+    return str === reverseString(str);
 }
 
 // Test cases
@@ -47,7 +64,13 @@ console.log(isPalindrome("level")); // Output: true
 //Write a function that takes an array of numbers and returns the sum of all even numbers in the array.
 
 function sumOfEvens(arr) {
-
+    let sum = 0;
+    for (let num of arr) {
+        if (num % 2 === 0) {
+            sum += num;
+        }
+    }
+    return sum;
 }
 
 // Test cases
@@ -58,7 +81,10 @@ console.log(sumOfEvens([1, 3, 5, 7, 9])); // Output: 0
 //Write a function that takes an array of consecutive (increasing) numbers starting from 1 and returns the missing number in the sequence.
 
 function findMissingNumber(arr) {
-
+    const n = arr.length + 1;
+    const totalSum = (n * (n + 1)) / 2;
+    const currentSum = arr.reduce((acc, curr) => acc + curr, 0);
+    return totalSum - currentSum;
 }
 
 // Test cases
@@ -69,7 +95,8 @@ console.log(findMissingNumber([2, 3, 4, 5])); // Output: 1
 //Write a function that rotates an array to the right by a given number of steps.
 
 function rotateArray(arr, steps) {
-
+    const  offset = steps % arr.length;
+    return [...arr.slice(-offset), ...arr.slice(0, -offset)];
 }
 
 // Test cases
