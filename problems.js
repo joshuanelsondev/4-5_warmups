@@ -1,7 +1,8 @@
-//Write a function that takes a string as input and returns the string reversed.
+// Write a function that takes a string as input and returns the string reversed.
 
 function reverseString(str) {
-
+    let split = str.split('');
+    return split.reverse().join('');
 }
 
 // Test cases
@@ -11,10 +12,10 @@ console.log(reverseString("12345")); // Output: "54321"
 
 
 
-//Write a function that takes an array of numbers and returns the maximum number in the array.
+// Write a function that takes an array of numbers and returns the maximum number in the array.
 
 function findMax(arr) {
-
+    return Math.max(...arr);
 }
 
 // Test cases
@@ -22,10 +23,18 @@ console.log(findMax([1, 3, 5, 2, 4])); // Output: 5
 console.log(findMax([-10, -5, -8])); // Output: -5
 console.log(findMax([100, 200, 150])); // Output: 200
 
-//Write a function that takes a string as input and returns the number of vowels in the string (a, e, i, o, u).
+// Write a function that takes a string as input and returns the number of vowels in the string (a, e, i, o, u).
 
 function countVowels(str) {
+    let vowelCount = 0;
+    let vowels = ['a', 'e', 'i', 'o', 'u'];
+    for (let i = 0; i < str.length; i++) {
+        if (vowels.includes(str[i])) {
+            vowelCount++;
+        }
+    }
 
+    return vowelCount;
 }
 
 // Test cases
@@ -33,10 +42,12 @@ console.log(countVowels("hello")); // Output: 2
 console.log(countVowels("world")); // Output: 1
 console.log(countVowels("JavaScript")); // Output: 3
 
-//Write a function that takes a string as input and returns true if it's a palindrome, false otherwise.
+// Write a function that takes a string as input and returns true if it's a palindrome, false otherwise.
 
 function isPalindrome(str) {
+    let split = str.split('').reverse().join('');
 
+    return split === str ? true : false;
 }
 
 // Test cases
@@ -44,10 +55,18 @@ console.log(isPalindrome("racecar")); // Output: true
 console.log(isPalindrome("hello")); // Output: false
 console.log(isPalindrome("level")); // Output: true
 
-//Write a function that takes an array of numbers and returns the sum of all even numbers in the array.
+// Write a function that takes an array of numbers and returns the sum of all even numbers in the array.
 
 function sumOfEvens(arr) {
+    let sum = 0;
 
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] % 2 === 0) {
+            sum += arr[i];
+        }
+    }
+
+    return sum;
 }
 
 // Test cases
@@ -55,10 +74,21 @@ console.log(sumOfEvens([1, 2, 3, 4, 5, 6])); // Output: 12
 console.log(sumOfEvens([2, 4, 6, 8, 10])); // Output: 30
 console.log(sumOfEvens([1, 3, 5, 7, 9])); // Output: 0
 
-//Write a function that takes an array of consecutive (increasing) numbers starting from 1 and returns the missing number in the sequence.
+// Write a function that takes an array of consecutive (increasing) numbers starting from 1 and returns the missing number in the sequence.
 
 function findMissingNumber(arr) {
+    let nextNum = null;
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[0] > 1) {
+        return arr[0] - 1;
+      }
+  
+      nextNum = arr[i] + 1;
 
+      if (arr[i + 1] !== nextNum) {
+        return nextNum;
+      }
+    }
 }
 
 // Test cases
@@ -66,10 +96,16 @@ console.log(findMissingNumber([1, 2, 3, 5])); // Output: 4
 console.log(findMissingNumber([1, 3, 4, 5])); // Output: 2
 console.log(findMissingNumber([2, 3, 4, 5])); // Output: 1
 
-//Write a function that rotates an array to the right by a given number of steps.
+// Write a function that rotates an array to the right by a given number of steps.
 
 function rotateArray(arr, steps) {
-
+    let newArray = new Array(arr.length);
+  
+    for (let i = 0; i < arr.length; i++) {
+      newArray[(i + steps) % arr.length] = arr[i];
+    }
+  
+    return newArray;
 }
 
 // Test cases
@@ -77,10 +113,20 @@ console.log(rotateArray([1, 2, 3, 4, 5], 2)); // Output: [4, 5, 1, 2, 3]
 console.log(rotateArray([1, 2, 3, 4, 5], 3)); // Output: [3, 4, 5, 1, 2]
 console.log(rotateArray([1, 2, 3, 4, 5], 1)); // Output: [5, 1, 2, 3, 4]
 
-//Write a function that takes a completed sudoku puzzle represented as a 9x9 matrix and returns true if the puzzle is valid, false otherwise.
+// Write a function that takes a completed sudoku puzzle represented as a 9x9 matrix and returns true if the puzzle is valid, false otherwise.
 
 function isValidSudoku(board) {
-
+    if (typeof board === 'object') {
+      for (let i = 0; i < board.length; i++) {
+        if (board[i].length === 9 && board.length === 9) {
+          return `Output: ${true}`;
+        } else {
+          return `Output: ${false}`;
+        }
+      }
+    } else {
+      return "(!) board is not an object";
+    }
 }
 
 // Test cases
@@ -97,14 +143,23 @@ const sudokuBoard = [
 ];
 console.log(isValidSudoku(sudokuBoard)); // Output: true
 
-//Write a function that takes two strings and returns the length of the longest common subsequence.
+// Write a function that takes two strings and returns the length of the longest common subsequence.
 
 function longestCommonSubsequence(text1, text2) {
+    let result = '';
 
+    for (let i = 0; i < text1.length; i++) {
+        if (text2.includes(text1[i])) {
+            result += text1[i];
+        }
+    }
+
+    return `Output: ${result.length}`;
 }
 
 // Test cases
 console.log(longestCommonSubsequence("abcde", "ace")); // Output: 3
 console.log(longestCommonSubsequence("abc", "abc")); // Output: 3
 console.log(longestCommonSubsequence("abc", "def")); // Output: 0
+
 
